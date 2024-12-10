@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainScreenController">
+   <children>
+      <TableView fx:id="tableViewBooks" layoutX="173.0" layoutY="-1.0" prefHeight="400.0" prefWidth="426.0">
+        <columns>
+          <TableColumn fx:id="tableColumnid" prefWidth="75.0" text="id" />
+          <TableColumn fx:id="tableColumntitle" prefWidth="122.4000244140625" text="title" />
+            <TableColumn fx:id="tableColumnauthor" prefWidth="118.39996337890625" text="author" />
+            <TableColumn fx:id="tableColumngenre" prefWidth="111.199951171875" text="genre" />
+        </columns>
+      </TableView>
+      <Button fx:id="buttonViewBooks" layoutX="54.0" layoutY="174.0" mnemonicParsing="false" text="View Books" />
+      <Button fx:id="buttonSearchBook" layoutX="50.0" layoutY="40.0" mnemonicParsing="false" text="Search Book" />
+      <Button fx:id="buttonDeleteBook" layoutX="92.0" layoutY="360.0" mnemonicParsing="false" text="Delete Book" />
+      <Button fx:id="buttonAddBook" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" text="Add Book" />
+      <TextField fx:id="searchField" layoutX="16.0" layoutY="14.0" />
+   </children>
+</AnchorPane>
