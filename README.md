@@ -1,3 +1,5 @@
+# !!!Due to issues with git/ide, the project needs to be split into two different intelijidea projects, one for client side and one for server side!!! 
+
 # Library Management System
 
 The **Library Management System** is a straightforward and user-friendly application created to handle library operations such as managing books, users, and transactions. It supports role-based access for administrators and regular users, ensuring functionality tailored specifically to each role.
