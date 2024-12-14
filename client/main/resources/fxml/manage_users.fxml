@@ -9,11 +9,13 @@
             <Label text="User Management Panel" style="-fx-font-size: 22px; -fx-font-weight: bold;" />
 
             <!-- User Table -->
-            <TableView fx:id="userTable" prefHeight="350" prefWidth="700">
+            <TableView fx:id="userTable">
                 <columns>
-                    <TableColumn fx:id="userIdColumn" text="User ID" prefWidth="200" />
-                    <TableColumn fx:id="usernameColumn" text="Username" prefWidth="300" />
-                    <TableColumn fx:id="roleColumn" text="Role" prefWidth="200" />
+                    <TableColumn fx:id="userIdColumn" text="ID" />
+                    <TableColumn fx:id="usernameColumn" text="Username" />
+                    <TableColumn fx:id="roleColumn" text="Role" />
+                    <TableColumn fx:id="emailColumn" text="Email" /> <!-- New Email Column -->
+                    <TableColumn fx:id="passwordColumn" text="Password" /> <!-- New Password Column -->
                 </columns>
             </TableView>
 

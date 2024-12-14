@@ -44,12 +44,9 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<List<UserResponse>> getAllUsers() {
-        List<UserResponse> userResponses = userService.getAllUsers()
-                .stream()
-                .map(UserResponse::new) // Convert to DTO
-                .toList();
-        return ResponseEntity.ok(userResponses);
+    public ResponseEntity<List<User>> getAllUsers() {
+        List<User> users = userService.getAllUsers(); // Fetch the list of User entities directly
+        return ResponseEntity.ok(users);
     }
 
     @PutMapping("/{user_id}")

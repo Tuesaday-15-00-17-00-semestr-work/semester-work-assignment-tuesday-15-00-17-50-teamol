@@ -47,12 +47,14 @@ public class BookListController {
     private Button deleteBookButton;
     @FXML
     private Button manageUsersButton;
+    @FXML
+    private Button viewTransactionsButton;
 
     // Borrow/Return buttons (for regular users)
     @FXML
     private Button borrowBookButton;
     @FXML
-    private Button returnBookButton;
+    private Button viewBorrowedBooksButton;
 
     @FXML
     private HBox adminActionsBox; // Parent container for admin-only actions
@@ -86,7 +88,6 @@ public class BookListController {
             adminActionsBox.setVisible(true);
             adminActionsBox.setManaged(true); // Ensure it's included in layout
             borrowBookButton.setVisible(true);
-            returnBookButton.setVisible(true); // Hide user-specific buttons
         } else {
             // Hide admin-only actions for regular users
             adminActionsBox.setVisible(false);
@@ -232,37 +233,43 @@ public class BookListController {
         }).start();
     }
 
-    @FXML
-    private void handleReturnBook() {
-        Book selectedBook = bookTable.getSelectionModel().getSelectedItem();
-        if (selectedBook == null) {
-            showStatus("Please select a book to return.", true);
-            return;
-        }
-
-        Long currentUserId = UserSession.getInstance().getCurrentUserId();
-        if (currentUserId == -1) {
-            showStatus("You need to log in to return a book.", true);
-            return;
-        }
-
-        new Thread(() -> {
-            boolean success = transactionService.returnBook(currentUserId.intValue(), selectedBook.getBookId());
-            Platform.runLater(() -> {
-                if (success) {
-                    showStatus("Book returned successfully.", false);
-                    loadBooks();
-                } else {
-                    showStatus("Failed to return the book. Please try again.", true);
-                }
-            });
-        }).start();
-    }
-
     private void showStatus(String message, boolean isError) {
         statusLabel.setText(message);
         statusLabel.setStyle(isError ? "-fx-text-fill: red;" : "-fx-text-fill: green;");
     }
+
+    @FXML
+    private void handleViewTransactions() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/transaction_list.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Transaction List");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            showStatus("Failed to open transaction list.", true);
+        }
+    }
+
+    @FXML
+    private void handleViewBorrowedBooks() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/borrowed_books.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Borrowed Books");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            showStatus("Failed to open borrowed books view.", true);
+        }
+    }
+
     @FXML
     public void handleLogout(ActionEvent event) {
         try {

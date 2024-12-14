@@ -5,7 +5,6 @@ import Client.library.model.User;
 import Client.library.util.UserSession;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -37,28 +36,13 @@ public class LoginController {
 
             if (loggedInUser != null) {
                 UserSession.getInstance().setLoggedInUser(loggedInUser);
-                loadMainApplication(); // Redirect to the main application after login
+                loadMainApplication();
             } else {
                 errorLabel.setText("Invalid credentials. Please try again.");
             }
         } catch (Exception e) {
             errorLabel.setText("An error occurred during login. Please try again later.");
         }
-    }
-
-    private void showError(String message) {
-        // Option 1: Using the errorLabel to display errors
-        errorLabel.setText(message);
-        errorLabel.setStyle("-fx-text-fill: red;");
-
-        // Option 2 (Optional): Showing errors using an Alert dialog
-        showAlert(Alert.AlertType.ERROR, message);
-    }
-
-    private void showAlert(Alert.AlertType type, String message) {
-        Alert alert = new Alert(type);
-        alert.setContentText(message);
-        alert.showAndWait();
     }
 
     private void loadMainApplication() {
@@ -70,5 +54,4 @@ public class LoginController {
             e.printStackTrace();
         }
     }
-
 }

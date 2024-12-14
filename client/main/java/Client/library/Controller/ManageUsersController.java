@@ -27,7 +27,7 @@ public class ManageUsersController {
     @FXML
     private TableColumn<User, String> roleColumn;
     @FXML
-    private TableColumn<User, String> emailColumn; // New column for email
+    private TableColumn<User, String> emailColumn;
     @FXML
     private TableColumn<User, String> passwordColumn;
 
@@ -44,8 +44,8 @@ public class ManageUsersController {
         userIdColumn.setCellValueFactory(new PropertyValueFactory<>("userId"));
         usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
         roleColumn.setCellValueFactory(new PropertyValueFactory<>("roleId"));
-        emailColumn.setCellValueFactory(new PropertyValueFactory<>("email")); // Map email
-        passwordColumn.setCellValueFactory(new PropertyValueFactory<>("password")); // Map password
+        emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
+        passwordColumn.setCellValueFactory(new PropertyValueFactory<>("password"));
     }
 
     private void loadUsers() {
@@ -54,7 +54,6 @@ public class ManageUsersController {
             userTable.setItems(users);
         } catch (Exception e) {
             showAlert("Error", "Failed to load users.");
-            e.printStackTrace();
         }
     }
 
@@ -65,17 +64,16 @@ public class ManageUsersController {
             Parent parent = loader.load();
 
             AddEditUserController controller = loader.getController();
-            controller.setUser(null); // Null for creating a new user
+            controller.setUser(null);
 
             Stage stage = new Stage();
             stage.setTitle("Add User");
             stage.setScene(new Scene(parent));
             stage.showAndWait();
 
-            loadUsers(); // Refresh the users list after closing the popup
+            loadUsers();
         } catch (IOException e) {
             showAlert("Error", "Failed to open Add User window.");
-            e.printStackTrace();
         }
     }
 
@@ -92,17 +90,16 @@ public class ManageUsersController {
             Parent parent = loader.load();
 
             AddEditUserController controller = loader.getController();
-            controller.setUser(selectedUser); // Pass the selected user for editing
+            controller.setUser(selectedUser);
 
             Stage stage = new Stage();
             stage.setTitle("Edit User");
             stage.setScene(new Scene(parent));
             stage.showAndWait();
 
-            loadUsers(); // Refresh the users list after closing the popup
+            loadUsers();
         } catch (IOException e) {
             showAlert("Error", "Failed to open Edit User window.");
-            e.printStackTrace();
         }
     }
 
@@ -121,7 +118,7 @@ public class ManageUsersController {
 
         boolean success = userService.deleteUser(selectedUser.getUserId());
         if (success) {
-            users.remove(selectedUser); // Remove from observable list
+            users.remove(selectedUser);
             showAlert("Success", "User deleted successfully!");
         } else {
             showAlert("Error", "Failed to delete user.");

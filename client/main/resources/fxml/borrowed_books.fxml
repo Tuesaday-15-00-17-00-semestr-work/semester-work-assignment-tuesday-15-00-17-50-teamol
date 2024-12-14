@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" xmlns="http://javafx.com/javafx" fx:controller="Client.library.Controller.BorrowedBooksController">
+    <children>
+        <VBox alignment="CENTER" spacing="15" layoutX="100" layoutY="50">
+            <!-- Header Label -->
+            <Label text="Borrowed Books" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+
+            <!-- Table to display borrowed books -->
+            <TableView fx:id="borrowedBooksTable" prefHeight="300" prefWidth="600">
+                <columns>
+                    <TableColumn fx:id="bookIdColumn" text="Book ID" />
+                    <TableColumn fx:id="titleColumn" text="Title" />
+                    <TableColumn fx:id="authorColumn" text="Author" />
+                    <TableColumn fx:id="borrowedDateColumn" text="Borrowed Date" />
+                </columns>
+            </TableView>
+
+            <!-- Button to return a book -->
+            <HBox alignment="CENTER" spacing="10">
+                <Button text="Return Book" onAction="#handleReturnBook" />
+                <Button text="Close" onAction="#handleCloseWindow" />
+            </HBox>
+
+            <!-- Label for status messages -->
+            <Label fx:id="statusLabel" text="Status messages appear here." style="-fx-text-fill: green;" />
+        </VBox>
+    </children>
+</AnchorPane>

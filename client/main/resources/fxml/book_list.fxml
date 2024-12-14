@@ -28,7 +28,7 @@
             <!-- Buttons for Regular Users -->
             <HBox spacing="10" alignment="CENTER">
                 <Button fx:id="borrowBookButton" text="Borrow Book" onAction="#handleBorrowBook" />
-                <Button fx:id="returnBookButton" text="Return Book" onAction="#handleReturnBook" />
+                <Button text="View Borrowed Books" onAction="#handleViewBorrowedBooks" />
             </HBox>
 
             <!-- Buttons for Admin Users -->
@@ -37,6 +37,7 @@
                 <Button fx:id="updateBookButton" text="Update Book" onAction="#handleUpdateBook" />
                 <Button fx:id="deleteBookButton" text="Delete Book" onAction="#handleDeleteBook" />
                 <Button fx:id="manageUsersButton" text="Manage Users" onAction="#handleManageUsers" />
+                <Button fx:id="viewTransactionsButton" text="View Transactions" onAction="#handleViewTransactions" />
             </HBox>
 
             <!-- Logout Button -->

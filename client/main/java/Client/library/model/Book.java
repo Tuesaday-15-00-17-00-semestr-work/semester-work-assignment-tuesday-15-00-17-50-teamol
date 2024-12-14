@@ -40,13 +40,8 @@ public class Book {
         this.totalCopies = totalCopies;
     }
 
-    // Standard Getters and Setters
     public int getBookId() {
         return bookId;
-    }
-
-    public void setBookId(int bookId) {
-        this.bookId = bookId;
     }
 
     public String getTitle() {
@@ -108,10 +103,6 @@ public class Book {
 
     public IntegerProperty availableCopiesProperty() {
         return new SimpleIntegerProperty(availableCopies);
-    }
-
-    public IntegerProperty totalCopiesProperty() {
-        return new SimpleIntegerProperty(totalCopies);
     }
 
     @Override

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="Client.library.Controller.TransactionListController">
+    <Label text="Transactions" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+    <TableView fx:id="transactionTable" prefHeight="400" prefWidth="800">
+        <columns>
+            <TableColumn fx:id="transactionIdColumn" text="Transaction ID" />
+            <TableColumn fx:id="usernameColumn" text="Username" />
+            <TableColumn fx:id="bookTitleColumn" text="Book Title" />
+            <TableColumn fx:id="actionColumn" text="Action" />
+            <TableColumn fx:id="dateColumn" text="Date" />
+        </columns>
+    </TableView>
+    <Button text="Close" onAction="#handleCloseWindow" alignment="CENTER" />
+</VBox>

@@ -1,84 +1,102 @@
 package Client.library.model;
 
+import com.google.gson.annotations.SerializedName;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Transaction {
-    private final IntegerProperty transactionId = new SimpleIntegerProperty();
-    private final StringProperty username = new SimpleStringProperty();
-    private final StringProperty bookId = new SimpleStringProperty();
-    private final StringProperty action = new SimpleStringProperty();
-    private final StringProperty date = new SimpleStringProperty();
+    @SerializedName("transactionId")
+    private int transactionId;
+    @SerializedName("userId")
+    private int userId;
+    @SerializedName("bookId")
+    private int bookId;
+    @SerializedName("action")
+    private String action;
+    @SerializedName("date")
+    private String date;
 
-    // Constructor
-    public Transaction(int transactionId, String username, String bookId, String action, String date) {
-        this.transactionId.set(transactionId);
-        this.username.set(username);
-        this.bookId.set(bookId);
-        this.action.set(action);
-        this.date.set(date);
+    private final IntegerProperty transactionIdProperty = new SimpleIntegerProperty();
+    private final IntegerProperty userIdProperty = new SimpleIntegerProperty();
+    private final IntegerProperty bookIdProperty = new SimpleIntegerProperty();
+    private final StringProperty actionProperty = new SimpleStringProperty();
+    private final StringProperty dateProperty = new SimpleStringProperty();
+
+    public Transaction() {}
+
+    public Transaction(int transactionId, int userId, int bookId, String action, String date) {
+        this.transactionId = transactionId;
+        this.userId = userId;
+        this.bookId = bookId;
+        this.action = action;
+        this.date = date;
+
+        updateProperties();
     }
 
-    // Getters and Setters
-    public int getTransactionId() {
-        return transactionId.get();
+    public void updateProperties() {
+        this.transactionIdProperty.set(transactionId);
+        this.userIdProperty.set(userId);
+        this.bookIdProperty.set(bookId);
+        this.actionProperty.set(action);
+        this.dateProperty.set(date);
     }
 
-    public void setTransactionId(int transactionId) {
-        this.transactionId.set(transactionId);
+    public int getUserId() {
+        return userId;
     }
 
-    public IntegerProperty transactionIdProperty() {
-        return transactionId;
-    }
-
-    public String getUsername() {
-        return username.get();
-    }
-
-    public void setUsername(String username) {
-        this.username.set(username);
-    }
-
-    public StringProperty usernameProperty() {
-        return username;
-    }
-
-    public String getBookTitle() {
-        return bookId.get();
-    }
-
-    public void setBookTitle(String bookId) {
-        this.bookId.set(bookId);
-    }
-
-    public StringProperty bookTitleProperty() {
+    public int getBookId() {
         return bookId;
     }
 
     public String getAction() {
-        return action.get();
-    }
-
-    public void setAction(String action) {
-        this.action.set(action);
-    }
-
-    public StringProperty actionProperty() {
         return action;
     }
 
-    public String getDate() {
-        return date.get();
+    // JavaFX property getters for GUI binding
+    public IntegerProperty transactionIdProperty() {
+        return transactionIdProperty;
     }
 
-    public void setDate(String date) {
-        this.date.set(date);
+    public IntegerProperty bookIdProperty() {
+        return bookIdProperty;
+    }
+
+    public StringProperty actionProperty() {
+        return actionProperty;
     }
 
     public StringProperty dateProperty() {
-        return date;
+        return dateProperty;
+    }
+    private final StringProperty bookTitleProperty = new SimpleStringProperty();
+
+    public StringProperty bookTitleProperty() {
+        return bookTitleProperty;
+    }
+
+    public String getBookTitle() {
+        return bookTitleProperty.get();
+    }
+
+    public void setBookTitle(String bookTitle) {
+        this.bookTitleProperty.set(bookTitle);
+    }
+
+    private final StringProperty usernameProperty = new SimpleStringProperty();
+
+    public StringProperty usernameProperty() {
+        return usernameProperty;
+    }
+
+    public String getUsername() {
+        return usernameProperty.get();
+    }
+
+    public void setUsername(String username) {
+        this.usernameProperty.set(username);
     }
 }

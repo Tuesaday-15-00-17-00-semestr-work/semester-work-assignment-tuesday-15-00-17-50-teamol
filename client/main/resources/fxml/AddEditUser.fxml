@@ -12,7 +12,7 @@
         <TextField fx:id="emailField" GridPane.rowIndex="1" GridPane.columnIndex="1" />
         <Label text="Password:" GridPane.rowIndex="2" GridPane.columnIndex="0" />
         <TextField fx:id="passwordField" promptText="Leave blank to keep current password" GridPane.rowIndex="2" GridPane.columnIndex="1" />
-        <Label text="Role:" GridPane.rowIndex="3" GridPane.columnIndex="0" />
+        <Label text="RoleID:" GridPane.rowIndex="3" GridPane.columnIndex="0" />
         <TextField fx:id="roleField" GridPane.rowIndex="3" GridPane.columnIndex="1" />
     </GridPane>
     <Label fx:id="statusLabel" textFill="red" />

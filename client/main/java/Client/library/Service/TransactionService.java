@@ -1,11 +1,16 @@
 package Client.library.Service;
 
+import Client.library.model.Transaction;
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
+import javafx.collections.FXCollections;
 
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.List;
 
 public class TransactionService {
 
@@ -35,8 +40,26 @@ public class TransactionService {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             return response.statusCode() == 200;
         } catch (Exception e) {
-            e.printStackTrace();
             return false;
         }
+    }
+
+    public List<Transaction> getAllTransactions() {
+        try {
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create("http://localhost:8080/api/transactions"))
+                    .GET()
+                    .build();
+
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            if (response.statusCode() == 200) {
+                List<Transaction> transactions = new Gson().fromJson(response.body(), new TypeToken<List<Transaction>>() {}.getType());
+                transactions.forEach(Transaction::updateProperties);
+                return transactions;
+            }
+        } catch (Exception e) {
+            // Exception handling is silent to avoid debugging outputs
+        }
+        return FXCollections.observableArrayList();
     }
 }

@@ -1,7 +1,7 @@
 package Client.library.model;
 
 public class User {
-    private Long user_id; // Optional field
+    private Long user_id;
     private String username;
     private String role_id;
     private String email;
@@ -26,10 +26,6 @@ public User(Long user_id, String username, String role_id, String email, String 
         return user_id;
     }
 
-    public void setUserId(Long user_id) {
-        this.user_id = user_id;
-    }
-
     public String getUsername() {
         return username;
     }
@@ -42,23 +38,11 @@ public User(Long user_id, String username, String role_id, String email, String 
         return role_id;
     }
 
-    public void setRoleId(String role_id) {
-        this.role_id = role_id;
-    }
-
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getPassword() {
         return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 }
