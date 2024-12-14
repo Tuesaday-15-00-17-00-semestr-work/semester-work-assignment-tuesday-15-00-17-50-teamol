@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="Client.library.Controller.ManageUsersController">
+    <children>
+        <VBox spacing="20" layoutX="20" layoutY="20" alignment="CENTER">
+            <!-- Header Label -->
+            <Label text="User Management Panel" style="-fx-font-size: 22px; -fx-font-weight: bold;" />
+
+            <!-- User Table -->
+            <TableView fx:id="userTable" prefHeight="350" prefWidth="700">
+                <columns>
+                    <TableColumn fx:id="userIdColumn" text="User ID" prefWidth="200" />
+                    <TableColumn fx:id="usernameColumn" text="Username" prefWidth="300" />
+                    <TableColumn fx:id="roleColumn" text="Role" prefWidth="200" />
+                </columns>
+            </TableView>
+
+            <!-- Buttons for User Actions -->
+            <HBox spacing="15" alignment="CENTER">
+                <Button text="Register New User" onAction="#handleAddUser" />
+                <Button text="Update Selected User" onAction="#handleEditUser" />
+                <Button text="Delete Selected User" onAction="#handleDeleteUser" />
+            </HBox>
+
+            <!-- Status/Error Message -->
+            <Label fx:id="statusLabel" text="Status messages will appear here." style="-fx-text-fill: green;" />
+        </VBox>
+    </children>
+</AnchorPane>

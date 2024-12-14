@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="15" alignment="CENTER" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="Client.library.Controller.AddEditBookController">
+    <!-- Modal Title -->
+    <Label fx:id="formTitle" style="-fx-font-weight: bold; -fx-font-size: 18px;" />
+
+    <!-- Input Fields -->
+    <TextField fx:id="titleField" promptText="Book Title" />
+    <TextField fx:id="authorField" promptText="Author" />
+    <TextField fx:id="isbnField" promptText="ISBN" />
+    <TextField fx:id="totalCopiesField" promptText="Total Copies" />
+    <TextField fx:id="availableCopiesField" promptText="Available Copies" />
+
+    <!-- Status Label -->
+    <Label fx:id="statusLabel" style="-fx-text-fill: red;" />
+
+    <!-- Buttons -->
+    <HBox spacing="15" alignment="CENTER">
+        <Button text="Save" onAction="#handleSave" />
+        <Button text="Cancel" onAction="#handleCancel" />
+    </HBox>
+</VBox>

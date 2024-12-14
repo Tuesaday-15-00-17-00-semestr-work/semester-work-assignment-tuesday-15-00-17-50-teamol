@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="Client.library.Controller.BookListController">
+    <children>
+        <VBox spacing="10" alignment="CENTER" layoutX="50" layoutY="50">
+            <!-- Title Label -->
+            <Label text="Available Books" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+
+            <!-- Search Bar -->
+            <HBox spacing="20">
+                <TextField fx:id="searchBar" promptText="Search books..." />
+                <Button text="Search" onAction="#handleSearch" />
+            </HBox>
+
+            <!-- Book Table -->
+            <TableView fx:id="bookTable" prefHeight="300" prefWidth="600">
+                <columns>
+                    <TableColumn fx:id="bookIdColumn" text="ID" />
+                    <TableColumn fx:id="titleColumn" text="Title" />
+                    <TableColumn fx:id="authorColumn" text="Author" />
+                    <TableColumn fx:id="isbnColumn" text="ISBN" />
+                    <TableColumn fx:id="availableCopiesColumn" text="Available Copies" />
+                </columns>
+            </TableView>
+
+            <!-- Buttons for Regular Users -->
+            <HBox spacing="10" alignment="CENTER">
+                <Button fx:id="borrowBookButton" text="Borrow Book" onAction="#handleBorrowBook" />
+                <Button fx:id="returnBookButton" text="Return Book" onAction="#handleReturnBook" />
+            </HBox>
+
+            <!-- Buttons for Admin Users -->
+            <HBox fx:id="adminActionsBox" spacing="10" alignment="CENTER">
+                <Button fx:id="addBookButton" text="Add Book" onAction="#handleAddBook" />
+                <Button fx:id="updateBookButton" text="Update Book" onAction="#handleUpdateBook" />
+                <Button fx:id="deleteBookButton" text="Delete Book" onAction="#handleDeleteBook" />
+                <Button fx:id="manageUsersButton" text="Manage Users" onAction="#handleManageUsers" />
+            </HBox>
+
+            <!-- Logout Button -->
+            <Button text="Logout" onAction="#handleLogout" />
+
+            <!-- Status Label -->
+            <Label fx:id="statusLabel" text="Status messages appear here." style="-fx-text-fill: green;" />
+        </VBox>
+    </children>
+</AnchorPane>
